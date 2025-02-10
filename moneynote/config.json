@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "slug": "moneynote",
   "description": "A financial management application.",
-  "url": "",
-  "codenotary": "",
+  "url": "https://github.com/XG520/hassio-addons",
+  "codenotary": "xg@githuo.com",
   "ingress": true,
   "ingress_port": 0,
   "ingress_stream": true,
@@ -24,6 +24,9 @@
     "media:rw",
     "share:rw",
     "ssl"
+  ],
+  "arch": [
+    "amd64"
   ],
   "backup_exclude": [
     "node_modules"
