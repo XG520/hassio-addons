@@ -6,7 +6,7 @@
   "url": "https://github.com/XG520/hassio-addons",
   "codenotary": "xg@githuo.com",
   "ingress": true,
-  "ingress_port": 0,
+  "ingress_port": 81,
   "ingress_stream": true,
   "panel_icon": "mdi:currency-usd",  
   "init": false,
@@ -32,49 +32,16 @@
     "node_modules"
   ],
   "options": {
-    "theme": "default",
-    "http_node": {
-      "username": "",
-      "password": ""
-    },
-    "http_static": {
-      "username": "",
-      "password": ""
-    },
-    "ssl": true,
-    "certfile": "fullchain.pem",
-    "keyfile": "privkey.pem",
-    "system_packages": [],
-    "npm_packages": [],
-    "init_commands": []
+    "environment": {
+      "DB_PASSWORD": "78p7gkc1",
+      "invite_code": "111111"
+    }
   },
   "schema": {
-    "log_level": "list(trace|debug|info|notice|warning|error|fatal)?",
-    "credential_secret": "password?",
-    "theme": "list(default|aurora|cobalt2|dark|dracula|espresso-libre|github-dark|github-dark-default|github-dark-dimmed|midnight-red|monoindustrial|monokai|monokai-dimmed|noctis|oceanic-next|oled|one-dark-pro|one-dark-pro-darker|solarized-dark|solarized-light|tokyo-night|tokyo-night-light|tokyo-night-storm|totallyinformation|zenburn)?",
-    "http_node": {
-      "username": "str",
-      "password": "password"
-    },
-    "http_static": {
-      "username": "str",
-      "password": "password"
-    },
-    "ssl": "bool",
-    "certfile": "str",
-    "keyfile": "str",
-    "system_packages": [
-      "str"
-    ],
-    "npm_packages": [
-      "str"
-    ],
-    "init_commands": [
-      "str"
-    ],
-    "leave_front_door_open": "bool?",
-    "safe_mode": "bool?",
-    "max_old_space_size": "int?"
+    "environment": {
+      "DB_PASSWORD": "str",
+      "invite_code": "str"
+    }
   },
   "image": "registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all"
 }
