@@ -76,6 +76,6 @@
     "safe_mode": "bool?",
     "max_old_space_size": "int?"
   },
-  "image": "registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all:latest"
+  "image": "registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all-latest"
 }
 
