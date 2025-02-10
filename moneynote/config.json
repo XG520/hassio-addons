@@ -1,6 +1,6 @@
 {
   "name": "MoneyNote",
-  "version": "1.0.0",
+  "version": "latest",
   "slug": "moneynote",
   "description": "A financial management application.",
   "url": "https://github.com/XG520/hassio-addons",
@@ -76,6 +76,6 @@
     "safe_mode": "bool?",
     "max_old_space_size": "int?"
   },
-  "image": "registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all-latest"
+  "image": "registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all
 }
 
