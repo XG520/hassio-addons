@@ -12,11 +12,11 @@
   "init": true,
   "homeassistant": "2023.3.0",
   "ports": {
-    "43740/tcp": 3306,
-    "43741/tcp": 80,
-    "43742/tcp": 9092,
-    "43743/tcp": 81,
-    "43744/tcp": 82
+    "3306/tcp": 43740,
+    "80/tcp": 43741,
+    "9092/tcp": 43742,
+    "81/tcp": 43743,
+    "82/tcp": 43744
   },
   "hassio_api": true,
   "hassio_role": "manager",

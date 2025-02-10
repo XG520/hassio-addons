@@ -1,7 +1,7 @@
 {
     "name": "XG520 addons repository",
     "slug": "custom_addons",
-    "version": "0.1",
+    "version": "0.3",
     "url": "https://github.com/XG520/hassio-addons",
     "maintainer": "@XG520"
 }
