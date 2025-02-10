@@ -6,7 +6,7 @@
   "url": "https://github.com/XG520/hassio-addons",
   "codenotary": "xg@githuo.com",
   "ingress": true,
-  "ingress_port": 81,
+  "ingress_port": 82,
   "ingress_stream": true,
   "panel_icon": "mdi:currency-usd",  
   "init": false,
