@@ -6,7 +6,7 @@
   "url": "https://github.com/XG520/hassio-addons",
   "codenotary": "xg@githuo.com",
   "ingress": true,
-  "ingress_port": 81,
+  "ingress_port": 82,
   "ingress_stream": true,
   "panel_icon": "mdi:currency-usd",  
   "init": true,
@@ -49,6 +49,11 @@
       "invite_code": "str"
     }
   },
-  "image": "registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all"
+  "image": "registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all",
+  "ingress_path": "/api/hassio_ingress/moneynote",
+  "proxy_set_header": [
+    "X-Ingress-Path /api/hassio_ingress/moneynote",
+    "X-Script-Name /api/hassio_ingress/moneynote"
+  ]
 }
 
