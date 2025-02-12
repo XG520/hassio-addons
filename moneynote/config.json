@@ -25,6 +25,8 @@
   "auth_api": true,
   "uart": true,
   "map": [
+    "addons/moneynote/nginx:/etc/nginx",
+    "addons/moneynote/www:/var/www",
     "addon_config:rw",
     "homeassistant_config:rw",
     "media:rw",
