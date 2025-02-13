@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="phpMyAdmin coding standard" xsi:noNamespaceSchemaLocation="../vendor/squizlabs/php_codesniffer/phpcs.xsd">
+    <description>The phpMyAdmin coding standard.</description>
+
+    <!-- Import Doctrine coding standard (base) -->
+    <rule ref="Doctrine">
+        <!-- Do not require multiple assignment alignment -->
+        <exclude name="Generic.Formatting.MultipleStatementAlignment"/>
+
+        <!-- Disable the superfluous class naming rules -->
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousExceptionNaming"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousTraitNaming"/>
+
+        <!-- Do not replace /* @var type $foo */ and similar simple inline annotations with assert() -->
+        <exclude name="SlevomatCodingStandard.PHP.RequireExplicitAssertion"/>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint">
+        <properties>
+            <property name="enableStandaloneNullTrueFalseTypeHints" value="false"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint">
+        <properties>
+            <property name="enableStandaloneNullTrueFalseTypeHints" value="false"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
+        <properties>
+            <property name="enableStandaloneNullTrueFalseTypeHints" value="false"/>
+        </properties>
+    </rule>
+</ruleset>
