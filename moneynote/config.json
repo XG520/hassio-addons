@@ -3,7 +3,7 @@
   "version": "latest",
   "slug": "moneynote",
   "description": "A financial management application.",
-  "url": "https://nginx.idot.fun:88/library/hass-moneynote",
+  "url": "https://github.com/XG520/hassio-addons",
   "codenotary": "xg@githuo.com",
   "ingress": true,
   "ingress_port": 88,
@@ -51,7 +51,7 @@
       "invite_code": "str"
     }
   },
-  "image": "registry.cn-hangzhou.aliyuncs.com/moneynote/moneynote-all",
+  "image": "nginx.idot.fun:88/library/hass-moneynote",
   "ingress_path": "/api/hassio_ingress/moneynote",
   "proxy_set_header": [
     "X-Ingress-Path /api/hassio_ingress/moneynote",
