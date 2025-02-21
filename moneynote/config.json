@@ -3,7 +3,7 @@
   "version": "latest",
   "slug": "moneynote",
   "description": "A financial management application.",
-  "url": "nginx.idot.fun:88/library/hass-moneynote",
+  "url": "https://nginx.idot.fun:88/library/hass-moneynote",
   "codenotary": "xg@githuo.com",
   "ingress": true,
   "ingress_port": 88,
