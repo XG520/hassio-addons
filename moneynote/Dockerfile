@@ -6,10 +6,10 @@ LABEL maintainer="XG520" \
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Asia/Shanghai \
-    MYSQL_ROOT_PASSWORD=78p7gkc1 \
+    DB_PASSWORD=78p7gkc1 \
     SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/moneynote \
     SPRING_DATASOURCE_USERNAME=root \
-    SPRING_DATASOURCE_PASSWORD=${MYSQL_ROOT_PASSWORD} \
+    SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD} \
     SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.MySQL8Dialect \
     invite_code=111111
 
@@ -25,7 +25,7 @@ COPY moneynote.sql /data/
 COPY app/app.jar /app/
 COPY jdk-17.0.9_linux-x64_bin.deb /tmp/
 COPY mysql-apt-config_0.8.33-1_all.deb /tmp/
-COPY etc/nginx/sites-available/*.conf /etc/nginx/sites-enabled/
+COPY etc/nginx/sites-available/* /etc/nginx/sites-enabled/
 COPY var/www/ /var/www/
 
 RUN set -eux \
@@ -64,11 +64,11 @@ RUN set -eux \
     && mysqld --user=mysql --daemonize \
     && while ! mysqladmin ping -h localhost --silent; do sleep 1; done \
     && mysql -e "CREATE DATABASE IF NOT EXISTS moneynote CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;" \
-    && mysql -e "CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" \
+    && mysql -e "CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '${DB_PASSWORD}';" \
     && mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';" \
     && mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';" \
     && mysql -e "FLUSH PRIVILEGES;" \
-    && mysql -u root -p"${MYSQL_ROOT_PASSWORD}" moneynote < /data/moneynote.sql \
+    && mysql -u root -p"${DB_PASSWORD}" moneynote < /data/moneynote.sql \
     && mysqladmin shutdown \
     && echo '#!/bin/bash \n\
 set -e \n\
@@ -106,7 +106,7 @@ if ! pgrep nginx > /dev/null; then\n\
     exit 1\n\
 fi\n\
 \n\
-exec java -jar app.jar --spring.datasource.url=jdbc:mysql://$CONTAINER_IP:3306/moneynote --spring.datasource.username=root --spring.datasource.password=$MYSQL_ROOT_PASSWORD --spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect --invite.code=$invite_code'> /app/start.sh && chmod +x /app/start.sh 
+exec java -jar app.jar --spring.datasource.url=jdbc:mysql://$CONTAINER_IP:3306/moneynote --spring.datasource.username=root --spring.datasource.password=$DB_PASSWORD --spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect --invite.code=$invite_code'> /app/start.sh && chmod +x /app/start.sh 
 
 
 EXPOSE 88 81 82 9092 3306
