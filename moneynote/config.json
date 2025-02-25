@@ -3,20 +3,17 @@
   "version": "latest",
   "slug": "moneynote",
   "description": "A financial management application.",
+  "image": "nginx.idot.fun:88/library/hass-moneynote",
   "url": "https://github.com/XG520/hassio-addons",
   "codenotary": "xg@githuo.com",
   "ingress": true,
   "ingress_port": 88,
-  "ingress_stream": true,
   "panel_icon": "mdi:currency-usd",  
   "init": true,
   "homeassistant": "2023.3.0",
   "ports": {
     "3306/tcp": 43740,
-    "80/tcp": 43741,
-    "9092/tcp": 43742,
-    "81/tcp": 43743,
-    "82/tcp": 43744
+    "80/tcp": 43741
   },
   "hassio_api": true,
   "hassio_role": "manager",
@@ -41,7 +38,7 @@
   ],
   "options": {
     "environment": {
-      "DB_PASSWORD": "78p7gkc1",
+      "MYSQL_ROOT_PASSWORD": "78p7gkc1",
       "invite_code": "111111"
     }
   },
@@ -50,12 +47,6 @@
       "DB_PASSWORD": "str",
       "invite_code": "str"
     }
-  },
-  "image": "nginx.idot.fun:88/library/hass-moneynote",
-  "ingress_path": "/api/hassio_ingress/moneynote",
-  "proxy_set_header": [
-    "X-Ingress-Path /api/hassio_ingress/moneynote",
-    "X-Script-Name /api/hassio_ingress/moneynote"
-  ]
+  }
 }
 

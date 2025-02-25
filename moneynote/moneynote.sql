@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 192.168.31.41
+ Source Server         : 192.168.31.94
  Source Server Type    : MySQL
- Source Server Version : 80404 (8.4.4)
- Source Host           : 192.168.31.41:3306
+ Source Server Version : 80035 (8.0.35-0ubuntu0.23.04.1)
+ Source Host           : 192.168.31.94:43740
  Source Schema         : moneynote
 
  Target Server Type    : MySQL
- Target Server Version : 80404 (8.4.4)
+ Target Server Version : 80035 (8.0.35-0ubuntu0.23.04.1)
  File Encoding         : 65001
 
- Date: 20/02/2025 14:49:10
+ Date: 25/02/2025 10:28:11
 */
 
 SET NAMES utf8mb4;
@@ -33,7 +33,7 @@ CREATE TABLE `t_flow_file`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKo9r24mqfdfa4s0obyk89ncbl5`(`user_id`) USING BTREE,
   INDEX `FKjg7o798g6lxk41c3m4pnn44et`(`flow_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_flow_file
@@ -65,7 +65,7 @@ CREATE TABLE `t_user_account`  (
   `group_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKkur8wwtmwt486vhiy4q9boec6`(`group_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_account
@@ -99,7 +99,7 @@ CREATE TABLE `t_user_balance_flow`  (
   INDEX `FK7un5my1b0a3yyiom0l8pdicut`(`group_id`) USING BTREE,
   INDEX `FKr41ensdat6npd2dkeafjmflc6`(`payee_id`) USING BTREE,
   INDEX `FKaqtsdhctqjv5fvdvyf6jjsg5a`(`to_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_balance_flow
@@ -132,7 +132,7 @@ CREATE TABLE `t_user_book`  (
   INDEX `FK60plcw3envatirg494k37t9ms`(`default_transfer_from_account_id`) USING BTREE,
   INDEX `FKrd1g8xncq855rw4lmv4440o21`(`default_transfer_to_account_id`) USING BTREE,
   INDEX `FKjunl9lbftowsxeyoovoew1h5i`(`group_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_book
@@ -158,7 +158,7 @@ CREATE TABLE `t_user_category`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKee0w9yghv2lc2u6405p1mw1ps`(`parent_id`) USING BTREE,
   INDEX `FKpb2chmrgplojfbefvj0x6x569`(`book_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_category
@@ -213,7 +213,7 @@ CREATE TABLE `t_user_category_relation`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKqs0r8impuwvxx2jgwjeoh3v0n`(`balance_flow_id`) USING BTREE,
   INDEX `FKc8hf57tw7gkyboxj87773c8wb`(`category_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = FIXED;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Records of t_user_category_relation
@@ -234,7 +234,7 @@ CREATE TABLE `t_user_group`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK48ou577pqbl95cne14j5dcomm`(`creator_id`) USING BTREE,
   INDEX `FK1cer3g2fde5x4dufbx6x265p3`(`default_book_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_group
@@ -261,7 +261,7 @@ CREATE TABLE `t_user_note_day`  (
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKrvhe5mux7n789humkp3aw3ocw`(`user_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_note_day
@@ -282,7 +282,7 @@ CREATE TABLE `t_user_payee`  (
   `book_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKajnpgcvkqbqy9vevd0ublljq9`(`book_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_payee
@@ -319,7 +319,7 @@ CREATE TABLE `t_user_tag`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKig9ppldgr7mjdslg9v15xt6xa`(`parent_id`) USING BTREE,
   INDEX `FK1i2ydmflodkihrnet43fox1t6`(`book_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 172 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 172 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_tag
@@ -509,7 +509,7 @@ CREATE TABLE `t_user_tag_relation`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKovwto2qfa6xbbm4vesabt5q6k`(`balance_flow_id`) USING BTREE,
   INDEX `FK3h0934keqff9i1560no9vuktm`(`tag_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = FIXED;
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Records of t_user_tag_relation
@@ -536,11 +536,12 @@ CREATE TABLE `t_user_user`  (
   UNIQUE INDEX `UK_sgbyeo4w1viacqr67n48838n0`(`username`) USING BTREE,
   INDEX `FK9iqq5yxwll4jcjli2eb350cfq`(`default_book_id`) USING BTREE,
   INDEX `FK6uoid5dsvmh2b7qmn4w22ofyb`(`default_group_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_user
 -- ----------------------------
+INSERT INTO `t_user_user` VALUES (3, NULL, b'1', NULL, 'admin', '$2a$10$8.5Hne31wQqIghckDz5pv..DfPU8YojXFkJPPgRN339Xqd7gjy/06', '192.168.31.5', 1740450398331, NULL, 'admin', 3, 3);
 
 -- ----------------------------
 -- Table structure for t_user_user_group_relation
@@ -554,7 +555,7 @@ CREATE TABLE `t_user_user_group_relation`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `UK2r1ke7bbeidfwcl712wq3t1cl`(`user_id`, `group_id`) USING BTREE,
   INDEX `FK2ovl3fila18baesf8obl1nna5`(`group_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = FIXED;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Records of t_user_user_group_relation

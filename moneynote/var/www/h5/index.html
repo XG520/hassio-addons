@@ -85,6 +85,81 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <script>
+    // 路径检测和请求重写功能
+    (function() {
+      // 检测当前路径是否匹配目标前缀
+      const pathMatch = window.location.pathname.match(/^\/api\/hassio_ingress\/([^\/]+)/);
+      if (!pathMatch) return;
+      
+      const ingressPrefix = `/api/hassio_ingress/${pathMatch[1]}`;
+
+      // 覆盖fetch API
+      const originalFetch = window.fetch;
+      window.fetch = function(url, options = {}) {
+        const modifyUrl = (requestUrl) => {
+          if (requestUrl.startsWith('/') && !requestUrl.startsWith(ingressPrefix)) {
+            return ingressPrefix + requestUrl;
+          }
+          return requestUrl;
+        };
+
+        if (typeof url === 'string') {
+          url = modifyUrl(url);
+        } else if (url instanceof Request) {
+          const newUrl = modifyUrl(url.url);
+          url = new Request(newUrl, url);
+        }
+        return originalFetch.call(this, url, options);
+      };
+
+      // 覆盖XMLHttpRequest
+      const originalOpen = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function(method, url) {
+        if (url.startsWith('/') && !url.startsWith(ingressPrefix)) {
+          arguments[1] = ingressPrefix + url;
+        }
+        originalOpen.apply(this, arguments);
+      };
+
+      // 处理静态资源路径
+      function updateResourceUrl(element) {
+        const attributes = ['src', 'href'];
+        attributes.forEach(attr => {
+          const value = element.getAttribute(attr);
+          if (value && value.startsWith('/') && !value.startsWith(ingressPrefix)) {
+            element.setAttribute(attr, ingressPrefix + value);
+          }
+        });
+      }
+
+      // 处理现有资源
+      document.querySelectorAll('script, img, link, a').forEach(updateResourceUrl);
+
+      // 监控动态添加的资源
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              updateResourceUrl(node);
+              node.querySelectorAll('script, img, link, a').forEach(updateResourceUrl);
+            }
+          });
+        });
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
+    })();
+
+    // 原有的百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c612aa29079f1e51c734eea7401c215c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 </head>
 <body>
   <div class="loading">
