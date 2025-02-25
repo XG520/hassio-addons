@@ -39,7 +39,8 @@
   "options": {
     "environment": {
       "MYSQL_ROOT_PASSWORD": "78p7gkc1",
-      "invite_code": "111111"
+      "invite_code": "111111",
+      "DB_PASSWORD": "78p7gkc1"
     }
   },
   "schema": {
