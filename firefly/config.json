@@ -10,7 +10,6 @@
   "ingress_port": 8080,
   "panel_icon": "mdi:currency-usd",  
   "init": false,
-  "full_access": true,
   "homeassistant": "2023.3.0",
   "ports": {
     "8080/tcp": 42808
@@ -21,7 +20,7 @@
   "host_network": true,
   "internet": true,
   "boot": "auto",
-  "startup": "auto",
+  "startup": "services",
   "auth_api": true,
   "uart": true,
   "map": [
