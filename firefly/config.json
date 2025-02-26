@@ -1,7 +1,7 @@
 {
   "name": "firefly",
   "version": "latest",
-  "slug": "moneynote",
+  "slug": "firefly",
   "description": "A financial management application.",
   "image": "fireflyiii/core",
   "url": "https://github.com/XG520/hassio-addons",
@@ -21,8 +21,6 @@
   "auth_api": true,
   "uart": true,
   "map": [
-    "addons/moneynote/nginx:/etc/nginx",
-    "addons/moneynote/www:/var/www",
     "addon_config:rw",
     "homeassistant_config:rw",
     "media:rw",
