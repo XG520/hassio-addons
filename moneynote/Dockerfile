@@ -23,8 +23,8 @@ RUN mkdir -p /var/log/{nginx,php-fpm,mysql,java} \
 
 COPY moneynote.sql /data/
 COPY app/app.jar /app/
-COPY jdk-17.0.9_linux-x64_bin.deb /tmp/
-COPY mysql-apt-config_0.8.33-1_all.deb /tmp/
+# COPY jdk-17.0.9_linux-x64_bin.deb /tmp/
+# COPY mysql-apt-config_0.8.33-1_all.deb /tmp/
 COPY etc/nginx/sites-available/* /etc/nginx/sites-enabled/
 COPY var/www/ /var/www/
 
@@ -39,19 +39,19 @@ RUN set -eux \
         software-properties-common \
         curl \
         ca-certificates \
-    # && wget https://download.oracle.com/java/17/archive/jdk-17.0.9_linux-x64_bin.deb -O /tmp/jdk-17.0.9_linux-x64_bin.deb \
-    # && wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb -O /tmp/mysql-apt-config_0.8.33-1_all.deb \
+    && wget https://download.oracle.com/java/17/archive/jdk-17.0.9_linux-x64_bin.deb -O /tmp/jdk-17.0.9_linux-x64_bin.deb \
+    && wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb -O /tmp/mysql-apt-config_0.8.33-1_all.deb \
     && dpkg -i /tmp/mysql-apt-config_0.8.33-1_all.deb \
-    && add-apt-repository ppa:ondrej/php \
+    # && add-apt-repository ppa:ondrej/php \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         nginx \
-        php8.1-fpm \
-        php8.1-cli \
-        php8.1-mysql \
-        php8.1-xml \
-        php8.1-mbstring \
-        php8.1-curl \
+        # php8.1-fpm \
+        # php8.1-cli \
+        # php8.1-mysql \
+        # php8.1-xml \
+        # php8.1-mbstring \
+        # php8.1-curl \
         mysql-server \
     && dpkg -i /tmp/jdk-17.0.9_linux-x64_bin.deb \
     && chown -R www-data:www-data /var/www \
@@ -94,11 +94,11 @@ while true; do \n\
     sleep 2 \n\
 done \n\
 \n\
-service php8.1-fpm start \n\
-if ! pgrep php-fpm > /dev/null; then \n\
-    echo "PHP-FPM failed to start" \n\
-    exit 1 \n\
-fi \n\
+#service php8.1-fpm start \n\
+#if ! pgrep php-fpm > /dev/null; then \n\
+#    echo "PHP-FPM failed to start" \n\
+#    exit 1 \n\
+#fi \n\
 \n\
 service nginx start\n\
 if ! pgrep nginx > /dev/null; then\n\
