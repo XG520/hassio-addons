@@ -33,6 +33,10 @@
   "backup_exclude": [
     "node_modules"
   ],
+  "environment": {
+    "APP_KEY": "x0H3fQQfljyVME5eFGmIokY18anllBIh",
+    "DB_CONNECTION": "sqlite"
+  },
   "options": {
     "environment": {
       "APP_KEY": "x0H3fQQfljyVME5eFGmIokY18anllBIh",
