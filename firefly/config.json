@@ -2,18 +2,17 @@
   "name": "firefly",
   "version": "latest",
   "slug": "firefly",
-  "description": "A financial management application.",
-  "image": "fireflyiii/core",
+  "description": "fireflyiii",
+  "image": "nginx.idot.fun:88/library/fireflyiii",
   "url": "https://github.com/XG520/hassio-addons",
   "codenotary": "xg@githuo.com",
   "ingress": true,
-  "ingress_port": 8080,
+  "ingress_port": 777,
   "panel_icon": "mdi:currency-usd",  
   "init": false,
   "full_access": false,
   "homeassistant": "2023.3.0",
   "ports": {
-    "8080/tcp": 42808
   },
   "hassio_api": true,
   "hassio_role": "manager",
@@ -26,10 +25,7 @@
   "uart": true,
   "map": [
     "addon_config:rw",
-    "homeassistant_config:rw",
-    "media:rw",
-    "share:rw",
-    "ssl"
+    "homeassistant_config:rw"
   ],
   "arch": [
     "amd64"
