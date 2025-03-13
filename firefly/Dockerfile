@@ -4,7 +4,8 @@ LABEL maintainer="XG520" \
       description="firefly" \
       version="1.0"
 
-ENV LISTEN_PORT=8080
+ENV TARGET_URL=http://192.168.31.5:888 \
+    LISTEN_PORT=8080
 
 WORKDIR /app
 COPY proxy /app/proxy
