@@ -92,7 +92,6 @@ def proxy(path):
     scheme = request.headers.get('X-Forwarded-Proto', request.scheme)
     
     GlobalConfig.init_proxy_host(scheme, host, port)
-    GlobalConfig.init_ingress_path(port)
     if not GlobalConfig.INGRESS_PATH:
         GlobalConfig.init_ingress_path(ingress_path)
     

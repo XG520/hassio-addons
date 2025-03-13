@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urljoin
 from ..global_config import GlobalConfig
 from ..log_config import setup_logging
+from ..const import TARGET_URL
 
 logger, log_file = setup_logging(__name__)
 
@@ -61,7 +62,10 @@ def modify_html_content(html_content):
                     proxy_parsed = urlparse(proxy_base)
                     logger.info(f"格式: {parse_url(parsed_url.netloc)} {parse_url(proxy_parsed.netloc)}")
                     
-                    if parse_url(parsed_url.netloc) == parse_url(proxy_parsed.netloc):                    
+                    if (parse_url(parsed_url.netloc) == parse_url(proxy_parsed.netloc) 
+                        or
+                        parse_url(urlparse(TARGET_URL).netloc) == parse_url(parsed_url.netloc)
+                    ):                    
                         path = parsed_url.path
                         if parsed_url.query:
                             path += f"?{parsed_url.query}"
@@ -72,6 +76,23 @@ def modify_html_content(html_content):
                     # 只处理以 / 开头的相对路径
                     if url.startswith('/'):
                         element[attr] = f"{ingress_path}/{url.lstrip('/')}"
+
+# 处理内联样式中的url()
+    for script in soup.find_all('script'):
+        if script.string:
+            # 处理绝对 URL
+            script.string = re.sub(
+                r'''(var\s+[\w_]+\s*=\s*["'])(https?://[^\s"']+)(["'])''',
+                lambda m: f'{m.group(1)}{process_url(m.group(2), ingress_path, proxy_base)}{m.group(3)}',
+                script.string
+            )
+            
+            # 处理相对路径（以 / 开头）
+            script.string = re.sub(
+                r'''(var\s+[\w_]+\s*=\s*["'])(/[^\s"']*)(["'])''',
+                lambda m: f'{m.group(1)}{ingress_path}/{m.group(2).lstrip("/")}{m.group(3)}',
+                script.string
+            )
 
     # 处理所有具有 data-path 属性的元素
     for element in soup.find_all(attrs={"data-path": True}):
@@ -129,3 +150,28 @@ def modify_js_content(js_content):
         return f'"{url}"'
 
     return re.sub(r'"([^"]+)"', replace_path, js_content)
+
+
+def process_url(url, ingress_path, proxy_base):
+    """统一处理 URL（适用于标签属性和 script 变量）"""
+    if url.startswith(('http://', 'https://')):
+        parsed_url = urlparse(url)
+        proxy_parsed = urlparse(proxy_base)
+        target_parsed = urlparse(TARGET_URL)
+        
+        if (
+            parse_url(parsed_url.netloc) == parse_url(proxy_parsed.netloc)
+            or parse_url(parsed_url.netloc) == parse_url(target_parsed.netloc)
+        ):
+            path = parsed_url.path
+            if parsed_url.query:
+                path += f"?{parsed_url.query}"
+            if parsed_url.fragment:
+                path += f"#{parsed_url.fragment}"
+            return f"{proxy_base}{ingress_path}/{path.lstrip('/')}"
+        else:
+            return url
+    elif url.startswith('/'):
+        return f"{ingress_path}/{url.lstrip('/')}"
+    else:
+        return url

@@ -29,5 +29,4 @@ EXPOSE 777 8080 8443 9000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost/ || exit 1
 
-USER www-data
 CMD ["/init"]
