@@ -5,14 +5,14 @@ LABEL maintainer="XG520" \
       version="1.0"
 
 ENV TARGET_URL= \
-    LISTEN_PORT=80
+    LISTEN_PORT=8080
 
 WORKDIR /app
 COPY proxy /app/proxy
 
 USER root
 
-EXPOSE 80 
+EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost/ || exit 1

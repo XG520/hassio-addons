@@ -7,7 +7,7 @@
   "url": "https://github.com/XG520/hassio-addons",
   "codenotary": "xg@githuo.com",
   "ingress": true,
-  "ingress_port": 80,
+  "ingress_port": 8080,
   "panel_icon": "mdi:currency-usd",  
   "init": false,
   "full_access": false,
@@ -17,7 +17,7 @@
   "hassio_api": true,
   "hassio_role": "manager",
   "homeassistant_api": true,
-  "host_network": true,
+  "host_network": false,
   "internet": true,
   "boot": "auto",
   "startup": "services",
@@ -34,19 +34,16 @@
     "node_modules"
   ],
   "environment": {
-    "TARGET_URL": "",
-    "LISTEN_PORT": "80"
+    "TARGET_URL": ""
   },
   "options": {
     "environment": {
-      "TARGET_URL": "",
-      "LISTEN_PORT": "80"
+      "TARGET_URL": ""
     }
   },
   "schema": {
     "environment": {
-      "TARGET_URL": "str",
-      "LISTEN_PORT": "int"
+      "TARGET_URL": "str"
     }
   }
 }
