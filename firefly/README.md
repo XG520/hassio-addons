@@ -1,5 +1,6 @@
 先启动一个fireflyiii容器
 ```
+#例
 docker run \
  -d \
  -p 888:8080  \
@@ -12,5 +13,5 @@ docker run \
 ```
 点开配置给变量赋值
 ```
-TARGET_URL=fireflyiii地址及端口 #列：http://192.168.1.100:888
+TARGET_URL=fireflyiii地址及端口 #例：http://192.168.1.100:888
 ```
