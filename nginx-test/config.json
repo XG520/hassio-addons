@@ -1,0 +1,50 @@
+{
+  "name": "nginx",
+  "version": "latest",
+  "slug": "proxy",
+  "description": "proxy",
+  "image": "nginx.idot.fun:88/library/nginx",
+  "url": "https://github.com/XG520/hassio-addons",
+  "codenotary": "xg@githuo.com",
+  "ingress": true,
+  "ingress_port": 80,
+  "panel_icon": "mdi:currency-usd",
+  "init": false,
+  "full_access": false,
+  "homeassistant": "2023.3.0",
+  "ports": {},
+  "hassio_api": true,
+  "hassio_role": "manager",
+  "homeassistant_api": true,
+  "host_network": false,
+  "internet": true,
+  "boot": "auto",
+  "startup": "services",
+  "auth_api": true,
+  "uart": true,
+  "map": [
+    "addon_config:rw",
+    "homeassistant_config:rw"
+  ],
+  "arch": [
+    "amd64"
+  ],
+  "backup_exclude": [
+    "node_modules"
+  ],
+  "options": {
+    "TARGET_URL": "http://example.com"
+  },
+  "schema": {
+    "TARGET_URL": {
+      "name": "Target URL",
+      "description": "后端服务地址",
+      "required": true,
+      "type": "string",
+      "env_var": "TARGET_URL"
+    }
+  },
+  "environment": {
+  "VARIABLE_NAME": "{{ options.OPTIONS_KEY }}"
+  }
+}
