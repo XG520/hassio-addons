@@ -1,32 +1,20 @@
-FROM fireflyiii/core
+FROM python:3.11-alpine
 
 LABEL maintainer="XG520" \
       description="firefly" \
       version="1.0"
 
-ENV DEBIAN_FRONTEND=noninteractive \
-    APP_KEY= \
-    DB_CONNECTION=sqlite \
-    TARGET_URL=http://127.0.0.1:8080 \
-    LISTEN_PORT=777
+ENV TARGET_URL= \
+    LISTEN_PORT=80
 
-WORKDIR /var/www/html
-COPY proxy /var/www/html/proxy
-COPY init /init
+WORKDIR /app
+COPY proxy /app/proxy
 
 USER root
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        python3 \
-        curl && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    chown -R www-data:www-data /var/www/html \
-    && chmod +x /init
 
-EXPOSE 777 8080 8443 9000 
+EXPOSE 80 
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost/ || exit 1
 
-CMD ["/init"]
+CMD ["python", "-m", "proxy.main"]

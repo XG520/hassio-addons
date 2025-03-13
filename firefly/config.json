@@ -1,13 +1,13 @@
 {
-  "name": "firefly",
+  "name": "fireflyiii-proxy",
   "version": "latest",
   "slug": "firefly",
   "description": "fireflyiii",
-  "image": "nginx.idot.fun:88/library/fireflyiii",
+  "image": "nginx.idot.fun:88/library/fireflyiii-proxy",
   "url": "https://github.com/XG520/hassio-addons",
   "codenotary": "xg@githuo.com",
   "ingress": true,
-  "ingress_port": 777,
+  "ingress_port": 80,
   "panel_icon": "mdi:currency-usd",  
   "init": false,
   "full_access": false,
@@ -34,21 +34,19 @@
     "node_modules"
   ],
   "environment": {
-    "APP_KEY": "x0H3fQQfljyVME5eFGmIokY18anllBIh",
-    "DB_CONNECTION": "sqlite"
+    "TARGET_URL": "",
+    "LISTEN_PORT": "80"
   },
   "options": {
     "environment": {
-      "APP_KEY": "x0H3fQQfljyVME5eFGmIokY18anllBIh",
-      "DB_CONNECTION": "sqlite",
-      "S6_KEEP_ENV": "1", 
-      "S6_BEHAVIOUR_IF_STAGE2_FAILS": "2" 
+      "TARGET_URL": "",
+      "LISTEN_PORT": "80"
     }
   },
   "schema": {
     "environment": {
-      "APP_KEY": "str",
-      "DB_CONNECTION": "str"
+      "TARGET_URL": "str",
+      "LISTEN_PORT": "int"
     }
   }
 }

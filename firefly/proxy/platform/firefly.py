@@ -10,7 +10,7 @@ logger, log_file = setup_logging(__name__)
 def parse_url(url):
     """解析完整/不完整URL"""
     if not re.match(r'^[a-zA-Z]+://', url):
-        url = f'//{url}'  
+        url = f'//{url}'
     
     parsed = urlparse(url)
     hostname = parsed.hostname or ''
