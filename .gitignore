@@ -1,7 +1,7 @@
 /moneynote/mysql-apt-config_0.8.33-1_all.deb
 /moneynote/mysql-community-server-core-dbgsym_8.0.41-1ubuntu24.04_amd64.deb
 /moneynote/jdk-17.0.9_linux-x64_bin.deb
-/firefly/proxy/config.json
-/firefly/proxy/libs
-/firefly/proxy/logs
-/firefly/proxy/__pycache__
+/local-proxy/proxy/config.json
+/local-proxy/proxy/libs
+/local-proxy/proxy/logs
+/local-proxy/proxy/__pycache__
