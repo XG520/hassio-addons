@@ -8,12 +8,11 @@
   "codenotary": "xg@githuo.com",
   "ingress": true,
   "ingress_port": 8080,
-  "panel_icon": "mdi:currency-usd",  
+  "panel_icon": "mdi:currency-usd",
   "init": false,
   "full_access": false,
   "homeassistant": "2023.3.0",
-  "ports": {
-  },
+  "ports": {},
   "hassio_api": true,
   "hassio_role": "manager",
   "homeassistant_api": true,
@@ -33,18 +32,10 @@
   "backup_exclude": [
     "node_modules"
   ],
-  "environment": {
-    "TARGET_URL": ""
-  },
   "options": {
-    "environment": {
-      "TARGET_URL": ""
-    }
+    "TARGET_URL": "http://example.com"
   },
   "schema": {
-    "environment": {
-      "TARGET_URL": "str"
-    }
+    "TARGET_URL": "str"
   }
 }
-
