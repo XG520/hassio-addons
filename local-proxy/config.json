@@ -37,11 +37,12 @@
   },
   "schema": {
     "TARGET_URL": {
-      "name": "Target URL",
-      "description": "后端服务地址",
-      "required": true,
-      "type": "string",
-      "env_var": "TARGET_URL"
+      "type": "str",
+      "description": "Backend service URL",
+      "required": "true",
+      "env_var": "TARGET_URL",
+      "default": "http://localhost:8080",
+      "format": "url"
     }
   },
   "environment": {
