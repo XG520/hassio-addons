@@ -36,15 +36,6 @@
     "TARGET_URL": "http://example.com"
   },
   "schema": {
-    "TARGET_URL": {
-      "name": "Target URL",
-      "description": "后端服务地址",
-      "required": true,
-      "type": "string",
-      "env_var": "TARGET_URL"
-    }
-  },
-  "environment": {
-  "VARIABLE_NAME": "{{ options.OPTIONS_KEY }}"
+    "TARGET_URL": "str"
   }
 }
