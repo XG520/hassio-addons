@@ -3,7 +3,7 @@
   "version": "latest",
   "slug": "proxy",
   "description": "proxy",
-  "image": "nginx.idot.fun:88/library/nginx",
+  "image": "nginx",
   "url": "https://github.com/XG520/hassio-addons",
   "codenotary": "xg@githuo.com",
   "ingress": true,
