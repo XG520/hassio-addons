@@ -36,16 +36,6 @@
     "TARGET_URL": "http://example.com"
   },
   "schema": {
-    "TARGET_URL": {
-      "type": "str",
-      "description": "Backend service URL",
-      "required": "true",
-      "env_var": "TARGET_URL",
-      "default": "http://localhost:8080",
-      "format": "url"
-    }
-  },
-  "environment": {
-  "VARIABLE_NAME": "{{ options.OPTIONS_KEY }}"
+    "TARGET_URL": "str"
   }
 }
