@@ -3,6 +3,9 @@ import logging
 from logging.handlers import RotatingFileHandler
 from datetime import datetime 
 
+LOG_DIR = os.path.join(os.path.dirname(__file__), 'logs')
+log_file = os.path.join(LOG_DIR, 'proxy.log')
+
 class WatchdogFilter(logging.Filter):
     def filter(self, record):
         return not record.name.startswith('watchdog')
@@ -10,12 +13,10 @@ class WatchdogFilter(logging.Filter):
 def setup_logging(app_name):
     """配置日志系统"""
     # 创建logs目录
-    log_dir = os.path.join(os.path.dirname(__file__), 'logs')
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
+    if not os.path.exists(LOG_DIR):
+        os.makedirs(LOG_DIR)
 
-    # 配置日志文件
-    log_file = os.path.join(log_dir, 'proxy.log')
+    # 使用模块级变量
     file_handler = RotatingFileHandler(
         log_file,
         maxBytes=10*1024*1024,  # 10MB

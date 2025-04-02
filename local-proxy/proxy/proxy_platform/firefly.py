@@ -1,9 +1,10 @@
 import re
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urljoin
-from ..global_config import GlobalConfig
-from ..log_config import setup_logging
-from ..const import TARGET_URL
+from global_config import GlobalConfig
+from log_config import setup_logging
+from const import Const
+TARGET_URL = Const.get_target_url()
 
 logger, log_file = setup_logging(__name__)
 
